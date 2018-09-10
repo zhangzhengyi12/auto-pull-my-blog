@@ -34,16 +34,12 @@ function cloneBlogForGit() {
 
 function pullBlogForGit() {
   log.info(`Start Once Pull Blog :${nowTime()}`)
-  const cd = spawn('cd', ['blog'])
-  cd.stdout.on('close', () => {
-    log.info(`cd close : ${nowTime()}`)
-    const clone = spawn('git', ['pull'])
-    clone.stdout.on('data', data => {
-      log.info(`Pull Data :${data}: ${nowTime()}`)
-    })
-    clone.stdout.on('close', data => {
-      log.info(`Pull result :${data}: ${nowTime()}`)
-    })
+  const pull = spawn('git', ['pull', 'cwd', './blog'])
+  pull.stdout.on('data', data => {
+    log.info(`Pull Data :${data}: ${nowTime()}`)
+  })
+  pull.stdout.on('close', data => {
+    log.info(`Pull result :${data}: ${nowTime()}`)
   })
 }
 
