@@ -11,7 +11,7 @@ const log = bunyan.createLogger({
 })
 const spawn = require('child_process').spawn
 const exec = require('child_process').exec
-const pullTime = 1000 * 5
+const pullTime = 1000 * 60 * 10
 let timer
 log.info('AUTO SERVER STATR  :' + nowTime())
 
@@ -45,3 +45,4 @@ function pullBlogForGit() {
 }
 
 module.exports = { timer }
+
