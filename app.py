@@ -12,7 +12,8 @@ class blog:
     time = 60 * 10
 
     def __init__(self):
-        cm = f'git clone -b {self.blogBranch} {self.blogURL} {self.fileName}'
+        cm = 'git clone -b ' + self.blogBranch + ' ' + \
+            {self.blogURL} + '  ' + {self.fileName}
         os.system(cm)
 
     def start(self):
