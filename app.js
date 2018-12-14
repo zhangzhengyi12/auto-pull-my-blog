@@ -34,14 +34,10 @@ function cloneBlogForGit() {
 }
 
 function pullBlogForGit() {
-  log.info(`Start Once Pull Blog :${nowTime()}`)
-  const pull = exec('git pull', { cwd: './blog' })
-  pull.stdout.on('data', data => {
-    log.info(`Pull Data :${data}: ${nowTime()}`)
-  })
-  pull.stdout.on('close', data => {
-    log.info(`Pull result :${data}: ${nowTime()}`)
-  })
+const rmall = exec('rm -rf blog')
+rmall.stdout.on("close",()=>{
+  cloneBlogForGit()
+})
 }
 
 module.exports = { timer }

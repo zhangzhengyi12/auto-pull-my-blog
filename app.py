@@ -12,13 +12,16 @@ class blog:
     time = 60 * 10
 
     def __init__(self):
+        os.system('rm -rf blog')
         cm = 'git clone -b ' + self.blogBranch + ' ' + \
-            {self.blogURL} + '  ' + {self.fileName}
+            self.blogURL + '  ' + self.fileName
         os.system(cm)
 
     def start(self):
         self.refresh()
-        threading.Timer(self.start, self.refresh)
+        timer = threading.Timer(self.time, self.refresh)
+        timer.start()
+     
 
     def refresh(self):
         os.chdir('./blog')
